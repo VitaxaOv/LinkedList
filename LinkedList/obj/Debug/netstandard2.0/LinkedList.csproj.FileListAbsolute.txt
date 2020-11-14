@@ -1,0 +1,9 @@
+C:\Users\vit20\source\repos\LinkedList\LinkedList\bin\Debug\netstandard2.0\LinkedList.deps.json
+C:\Users\vit20\source\repos\LinkedList\LinkedList\bin\Debug\netstandard2.0\LinkedList.dll
+C:\Users\vit20\source\repos\LinkedList\LinkedList\bin\Debug\netstandard2.0\LinkedList.pdb
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.csprojAssemblyReference.cache
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.AssemblyInfoInputs.cache
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.AssemblyInfo.cs
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.csproj.CoreCompileInputs.cache
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.dll
+C:\Users\vit20\source\repos\LinkedList\LinkedList\obj\Debug\netstandard2.0\LinkedList.pdb

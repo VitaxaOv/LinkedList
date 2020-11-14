@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "GcItH19g74WHhiCICyNM7j+4vRMtT9oOSDX9aYJvxUnCaE9AEdc/RBlh7Mr9FuOEU0ArXw1gr3So3pgXwgeBLw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\vit20\\source\\repos\\LinkedList\\LinkedList\\LinkedList.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\vit20\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\vit20\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
