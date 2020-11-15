@@ -33,7 +33,113 @@ namespace DataDataStructures.LL
                 _root = null;
             }
         }
+        public int FindMinIndex()
+        {
+            if (Length == 0)
+            {
+                throw new Exception("Массив пустой");
+            }
+            int index = -1;
+            int max = 999999;
+            Node tmp=_root;
+            for (int i = 0; i < Length; i++)
+            {
+                if (max > tmp.Value)
+                {
+                    max = tmp.Value;
+                    index = i;
+                }
+                tmp = tmp.Next;
+            }
+            return index;
+        }
+        public int FindMaxIndex()
+        {
+            if (Length == 0)
+            {
+                throw new Exception("Массив пустой");
+            }
+            int index = 0;
+            int max = -999999;
+            Node tmp = _root;
+            for (int i = 0; i < Length; i++)
+            {
+                if (max < tmp.Value)
+                {
+                    max = tmp.Value;
+                    index = i;
+                }
+                tmp = tmp.Next;
+            }
+            return index;
+        }
 
+       public int FindMax()
+        {
+            Node crnt = _root;
+            for(int i = 0; i < FindMaxIndex(); i++)
+            {
+                crnt = crnt.Next;
+            }
+            return crnt.Value;
+        }
+        public int FindMin()
+        {
+            Node crnt = _root;
+            for (int i = 0; i < FindMinIndex(); i++)
+            {
+                crnt = crnt.Next;
+            }
+            return crnt.Value;
+        }
+        public void ArraySort()
+        {
+            Node crnti = _root;
+            for(int i = 0; i < Length; i++)
+            {
+                Node crntj = _root;
+                crntj = crntj.Next;
+                for(int j = 1; j < Length; j++)
+                {
+                    if (j > i)
+                    {
+                        if (crnti.Value > crntj.Value)
+                        {
+                            int tmp;
+                            tmp = crnti.Value;
+                            crnti.Value = crntj.Value;
+                            crntj.Value = tmp;
+                        }
+                    }
+                    crntj = crntj.Next;
+                }
+                crnti = crnti.Next;
+            }
+        }
+        public void ArraySortReverse()
+        {
+            Node crnti = _root;
+            for (int i = 0; i < Length; i++)
+            {
+                Node crntj = _root;
+                crntj = crntj.Next;
+                for (int j = 1; j < Length; j++)
+                {
+                    if (j > i)
+                    {
+                        if (crnti.Value < crntj.Value)
+                        {
+                            int tmp;
+                            tmp = crnti.Value;
+                            crnti.Value = crntj.Value;
+                            crntj.Value = tmp;
+                        }
+                    }
+                    crntj = crntj.Next;
+                }
+                crnti = crnti.Next;
+            }
+        }
         public int this[int index]
         {
             get
@@ -124,6 +230,27 @@ namespace DataDataStructures.LL
             }
             Length++;
         }
+        public void AddByIndexArray(int index, int[]array)
+        {
+            for(int i = 0; i < array.Length; i++)
+            {
+                AddByIndex(index + i, array[i]);
+            }
+        }
+        public void AddBeginArray(int []array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                AddByIndex(i, array[i]);
+            }
+        }
+        public void AddAndArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                AddByIndex(Length+i, array[i]);
+            }
+        }
         public void PopByIndex(int index)
         {
             if (index < 0 || index > Length)
@@ -153,6 +280,31 @@ namespace DataDataStructures.LL
             }
             Length--;
         }
+      public void PopByIndexArray(int index,int size)
+        {
+            if (size > Length - index)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            for(int i = 0; i < size; i++)
+            {
+                PopByIndex(index);
+            }
+        }
+        public void PopInEndArray(int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                PopInEnd();
+            }
+        }
+        public void PopInBeginArray(int size)
+        {
+            for (int i = 0; i < size; i++)
+            {
+                PopInBegin();
+            }
+        }
         public void PopInEnd()
         {
            PopByIndex(Length-1);
@@ -161,6 +313,54 @@ namespace DataDataStructures.LL
         {
             PopByIndex(0);
         }
+        public void DeleteByFirst()
+        {
+            Node crnt = _root;
+            crnt = crnt.Next;
+            
+            for (int j = 1; j < Length; j++)
+            {
+
+                if (_root.Value != crnt.Value)
+                {
+                    crnt = crnt.Next;
+
+                }
+                else {
+                    PopByIndex(j);
+                    j -= 1;
+                }
+            }
+        }
+        public void DeleteEqual()
+        {
+            Node crnti = _root;
+            for (int i = 0; i < Length - 1; i++)
+            {
+                Node crntj = crnti;
+                crntj = crntj.Next;
+                for (int k = i+1; k < Length ; k++)
+                {
+                    
+                    if (crntj.Value != crnti.Value)
+                    {
+                        crntj = crntj.Next;
+                    }
+                    else
+                    {
+                        Node tmp = crntj;
+                        tmp = tmp.Next;
+                        
+                        PopByIndex(k);
+                        k -= 1;
+                        crntj = tmp;
+                    }
+                    
+                }
+                crnti = crnti.Next;
+            }
+        }
+
         public override bool Equals(object obj)
         {
             LinkedList linkedList = (LinkedList)obj;
