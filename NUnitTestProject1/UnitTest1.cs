@@ -208,11 +208,14 @@ namespace NUnitTestProject1
             LinkedList actual = new LinkedList(array);
             Assert.Throws<IndexOutOfRangeException>(() => actual.PopByIndex(index));
         }
-        [TestCase(new int[] { 1, 2, 3, 4, 1 },new int[] { 1,2,3,4 })]
-        [TestCase(new int[] { 1, 2, 1, 1, 1 }, new int[] { 1,2})]
-        [TestCase(new int[] { 1, 2, 3, 4, 5 },new int[] { 1, 2, 3, 4,5 })]
-        [TestCase(new int[] { -5, 2, 3, -5, -5 }, new int[] { -5, 2, 3})]
-        public void DeleteBiFirstTest(int[] array, int[] expArray)
+
+        [TestCase(new int[] { 1, 2, 3, 4, 1 }, new int[] { 2, 3, 4 })]
+        [TestCase(new int[] { 1, 2, 1, 1, 1 }, new int[] {  2 })]
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, new int[] { 2, 3, 4, 5 })]
+        [TestCase(new int[] { -5, 2, 3, -5, -5 }, new int[] { 2, 3 })]
+        [TestCase(new int[] { -5, -5, -5, -5}, new int[] {  })]
+        [TestCase(new int[] { -5, -5, -5, -5 ,5,6}, new int[] { 5,6 })]
+        public void DeleteByFirstTest(int[] array, int[] expArray)
         {
             LinkedList expected = new LinkedList(expArray);
             LinkedList actual = new LinkedList(array);
@@ -220,17 +223,28 @@ namespace NUnitTestProject1
             Assert.AreEqual(expected, actual);
 
         }
-        [TestCase(new int[] { 1, 2, 2, 55,22,1 }, new int[] { 1, 2,55,22 })]
-        [TestCase(new int[] { 1, 2, 1, 2, 1 }, new int[] { 1, 2 })]
-        [TestCase(new int[] { 1, 1, 1}, new int[] { 1})]
-        [TestCase(new int[] { 1, 2, 3,4 }, new int[] { 1,2,3,4 })]
-        public void DeleteEqualTest(int[] array, int[] expArray)
+        [TestCase(new int[] { 1, 2, 3, 4, 1 }, 3, new int[] { 1, 2, 4, 1 })]
+        [TestCase(new int[] { 1, 2, 1, 1, 1 }, 1, new int[] { 2 })]
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, 0, new int[] { 1, 2, 3, 4, 5 })]
+        public void DeleteEqualValueTest(int[] array, int value, int[] expArray)
         {
             LinkedList expected = new LinkedList(expArray);
             LinkedList actual = new LinkedList(array);
-            actual.DeleteEqual();
+            actual.DeleteEqualValue(value);
             Assert.AreEqual(expected, actual);
 
         }
+        //[TestCase(new int[] { 1, 2, 2, 55, 22, 1 }, new int[] { 1, 2, 55, 22 })]
+        //[TestCase(new int[] { 1, 2, 1, 2, 1 }, new int[] { 1, 2 })]
+        //[TestCase(new int[] { 1, 1, 1 }, new int[] { 1 })]
+        //[TestCase(new int[] { 1, 2, 3, 4 }, new int[] { 1, 2, 3, 4 })]
+        //public void DeleteEqualTest(int[] array, int[] expArray)
+        //{
+        //    LinkedList expected = new LinkedList(expArray);
+        //    LinkedList actual = new LinkedList(array);
+        //    actual.DeleteEqual();
+        //    Assert.AreEqual(expected, actual);
+
+        //}
     } 
 }

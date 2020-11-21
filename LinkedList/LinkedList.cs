@@ -105,6 +105,7 @@ namespace DataDataStructures.LL
                     {
                         if (crnti.Value > crntj.Value)
                         {
+
                             int tmp;
                             tmp = crnti.Value;
                             crnti.Value = crntj.Value;
@@ -168,21 +169,22 @@ namespace DataDataStructures.LL
         }
         public void Reverse()
         {
-            Node crnt = _root;
-            for (int i = 0; i < Length / 2; i++)
-            {
-                Node crntend = _root;
-                for (int j = 0; j < Length - 1-i; j++)
+           
+                if (Length == 0)
                 {
-                    crntend = crntend.Next;
+                    return;
                 }
-
-                int tmpvalue = crnt.Value;
-                crnt.Value = crntend.Value;
-                crntend.Value = tmpvalue;
-                crnt = crnt.Next;
-            }
-            }
+                Node oldhead = _root;
+                Node tmp;
+                while (oldhead.Next != null)
+                {
+                    tmp = oldhead.Next;
+                    oldhead.Next = tmp.Next;
+                    tmp.Next = _root;
+                    _root = tmp;
+                }
+            
+        }
         public int IndexByValue(int value)
         {
             Node crnt = _root;
@@ -244,7 +246,7 @@ namespace DataDataStructures.LL
                 AddByIndex(i, array[i]);
             }
         }
-        public void AddAndArray(int[] array)
+        public void AddEndArray(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -315,52 +317,42 @@ namespace DataDataStructures.LL
         }
         public void DeleteByFirst()
         {
-            Node crnt = _root;
-            crnt = crnt.Next;
-            
-            for (int j = 1; j < Length; j++)
+            int v=Length;
+            int value=_root.Value;
+            for (int j = 0; j < v; j++)
             {
-
-                if (_root.Value != crnt.Value)
+                int index = IndexByValue(value);
+                if (index != -1)
                 {
-                    crnt = crnt.Next;
+                    PopByIndex(index);
 
                 }
-                else {
-                    PopByIndex(j);
-                    j -= 1;
+                else
+                {
+                    return;
                 }
             }
+
         }
-        public void DeleteEqual()
+        public void DeleteEqualValue(int value)
         {
-            Node crnti = _root;
-            for (int i = 0; i < Length - 1; i++)
+            int v = Length;
+            for (int j = 0; j < v; j++)
             {
-                Node crntj = crnti;
-                crntj = crntj.Next;
-                for (int k = i+1; k < Length ; k++)
+                int index = IndexByValue(value);
+                if (index != -1)
                 {
-                    
-                    if (crntj.Value != crnti.Value)
-                    {
-                        crntj = crntj.Next;
-                    }
-                    else
-                    {
-                        Node tmp = crntj;
-                        tmp = tmp.Next;
-                        
-                        PopByIndex(k);
-                        k -= 1;
-                        crntj = tmp;
-                    }
-                    
+                    PopByIndex(index);
+
                 }
-                crnti = crnti.Next;
+                else
+                {
+                    return;
+                }
             }
         }
-
+      
+       
         public override bool Equals(object obj)
         {
             LinkedList linkedList = (LinkedList)obj;
