@@ -39,14 +39,15 @@ namespace DataDataStructures.LL
             {
                 throw new Exception("Массив пустой");
             }
-            int index = -1;
-            int max = 999999;
+            int index = 0;
+            int min = _root.Value;
             Node tmp=_root;
-            for (int i = 0; i < Length; i++)
+            tmp = tmp.Next;
+            for (int i = 1; i < Length; i++)
             {
-                if (max > tmp.Value)
+                if (min > tmp.Value)
                 {
-                    max = tmp.Value;
+                    min = tmp.Value;
                     index = i;
                 }
                 tmp = tmp.Next;
@@ -60,9 +61,10 @@ namespace DataDataStructures.LL
                 throw new Exception("Массив пустой");
             }
             int index = 0;
-            int max = -999999;
+            int max = _root.Value;
             Node tmp = _root;
-            for (int i = 0; i < Length; i++)
+            tmp = tmp.Next;
+            for (int i = 1; i < Length; i++)
             {
                 if (max < tmp.Value)
                 {
@@ -76,6 +78,7 @@ namespace DataDataStructures.LL
 
        public int FindMax()
         {
+           
             Node crnt = _root;
             for(int i = 0; i < FindMaxIndex(); i++)
             {
@@ -143,8 +146,13 @@ namespace DataDataStructures.LL
         }
         public int this[int index]
         {
+            
             get
             {
+                if (index > Length - 1 || index < 0)
+                {
+                    throw new IndexOutOfRangeException();
+                }
                 Node tmp = _root;
                 for (int i = 0; i < index; i++)
                 {
@@ -155,6 +163,10 @@ namespace DataDataStructures.LL
 
             set
             {
+                if (index > Length - 1 || index < 0)
+                {
+                    throw new IndexOutOfRangeException();
+                }
                 Node tmp = _root;
                 for (int i = 0; i < index; i++)
                 {
